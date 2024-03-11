@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  game_2048:
+    image: python:3.9
+    volumes:
+      - .:/app
+    environment:
+      - DISPLAY=${DISPLAY}
+    command: python /app/pythongame.py
+    network_mode: host
+    depends_on:
+      - x11-bridge
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      DISPLAY: unix${DISPLAY}
+
+  x11-bridge:
+    image: alpine
+    command: sh -c "apk add --no-cache x11vnc xvfb && Xvfb :0 -screen 0 1024x768x16 & x11vnc -display :0 -nopw -listen localhost -xkb -forever -shared"
+    ports:
+      - "5900:5900"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
