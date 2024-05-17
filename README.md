@@ -45,12 +45,3 @@ volumes:
 
 ```
 
-This application requires the latest python and flask to be installed.
-
-```bash
-git clone https://github.com/buildwithdan/flask-crud
-cd flask-crud
-flask --debug --app api.app run
-```
-
-docker-compose.yml
