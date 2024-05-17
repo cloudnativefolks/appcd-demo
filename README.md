@@ -26,7 +26,7 @@ version: '3.8'
 
 services:
   app:
-    image: buildwithdan/flask-crud:latest  # Assuming this is the image with everything set up
+    image: sangam14/flask-crud:latest  # Assuming this is the image with everything set up
     restart: unless-stopped
     ports:
       - "5100:5000"  # Exposing the Flask app on port 5100 externally. Reminder the logic is HOST:CONTAINER. The container port has to be 5000 as the build image we set it as 5000 in the dockerfile.
@@ -48,6 +48,7 @@ services:
 
 volumes:
   postgres-data:
+
 ```
 
 This application requires the latest python and flask to be installed.
